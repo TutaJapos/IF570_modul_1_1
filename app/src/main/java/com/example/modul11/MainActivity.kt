@@ -14,19 +14,24 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.modul11.ui.theme.Modul11Theme
 
-class MainActivity : ComponentActivity() { // Use ComponentActivity
+class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
             Modul11Theme {
-                Surface(
-                    modifier = Modifier.fillMaxSize(),
-                    color = MaterialTheme.colorScheme.background
-                ) {
-                    Greeting("Android")
-                }
+                MyApp(modifier = Modifier.fillMaxSize())
             }
         }
+    }
+}
+
+@Composable
+fun MyApp(modifier: Modifier = Modifier) {
+    Surface(
+        modifier = modifier,
+        color = MaterialTheme.colorScheme.background
+    ) {
+        Greeting("Android")
     }
 }
 
@@ -40,10 +45,10 @@ fun Greeting(name: String, modifier: Modifier = Modifier) {
     }
 }
 
-@Preview(showBackground = true, name = "Text Preview")
+@Preview(showBackground = true)
 @Composable
 fun GreetingPreview() {
     Modul11Theme {
-        Greeting(name = "Android")
+        MyApp()
     }
 }
